@@ -23,48 +23,50 @@ export default function Carousel({ images }) {
   }, [index, nextSlide]);
 
   return (
-    <div className="relative w-full h-[550px] overflow-hidden rounded-2xl shadow-lg group">
-      {/* Sliding container */}
-      <motion.div
-        className="flex w-full h-full"
-        animate={{ x: `-${index * 100}%` }}
-        transition={{ duration: 0.8, ease: "easeInOut" }}
-      >
-        {images.map((img, i) => (
-          <img
-            key={i}
-            src={img}
-            alt={`Slide ${i}`}
-            className="w-full h-full  object-fill flex-shrink-0"
-          />
-        ))}
-      </motion.div>
+    <div className="px-12">
+      <div className="relative w-full h-[550px]  overflow-hidden rounded-2xl shadow-lg group">
+        {/* Sliding container */}
+        <motion.div
+          className="flex w-full h-full"
+          animate={{ x: `-${index * 100}%` }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+        >
+          {images.map((img, i) => (
+            <img
+              key={i}
+              src={img}
+              alt={`Slide ${i}`}
+              className="w-full h-full  object-fill flex-shrink-0"
+            />
+          ))}
+        </motion.div>
 
-      {/* Navigation Buttons */}
-      <button
-        onClick={prevSlide}
-        className="absolute top-1/2 left-4 -translate-y-1/2 bg-black/40 text-white p-3 rounded-full hover:bg-black/60 transition opacity-0 group-hover:opacity-100"
-      >
-        <FaChevronLeft />
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute top-1/2 right-4 -translate-y-1/2 bg-black/40 text-white p-3 rounded-full hover:bg-black/60 transition opacity-0 group-hover:opacity-100"
-      >
-        <FaChevronRight />
-      </button>
+        {/* Navigation Buttons */}
+        <button
+          onClick={prevSlide}
+          className="absolute top-1/2 left-4 -translate-y-1/2 bg-black/40 text-white p-3 rounded-full hover:bg-black/60 transition opacity-0 group-hover:opacity-100"
+        >
+          <FaChevronLeft />
+        </button>
+        <button
+          onClick={nextSlide}
+          className="absolute top-1/2 right-4 -translate-y-1/2 bg-black/40 text-white p-3 rounded-full hover:bg-black/60 transition opacity-0 group-hover:opacity-100"
+        >
+          <FaChevronRight />
+        </button>
 
-      {/* Dots */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-        {images.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setIndex(i)}
-            className={`w-3 h-3 rounded-full transition ${
-              i === index ? "bg-white" : "bg-white/50"
-            }`}
-          />
-        ))}
+        {/* Dots */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+          {images.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setIndex(i)}
+              className={`w-3 h-3 rounded-full transition ${
+                i === index ? "bg-white" : "bg-white/50"
+              }`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
