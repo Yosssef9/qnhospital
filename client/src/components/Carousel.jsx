@@ -23,7 +23,7 @@ export default function Carousel({ images }) {
   }, [index, nextSlide]);
 
   return (
-    <div className="relative w-full h-[500px] overflow-hidden rounded-2xl shadow-lg group">
+    <div className="relative w-full h-[550px] overflow-hidden rounded-2xl shadow-lg group">
       {/* Sliding container */}
       <motion.div
         className="flex w-full h-full"
@@ -35,7 +35,7 @@ export default function Carousel({ images }) {
             key={i}
             src={img}
             alt={`Slide ${i}`}
-            className="w-full h-[600px] object-contain flex-shrink-0"
+            className="w-full h-full  object-fill flex-shrink-0"
           />
         ))}
       </motion.div>

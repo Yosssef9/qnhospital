@@ -205,7 +205,7 @@ function DropdownItem({ item }) {
             initial={{ width: 0 }}
             animate={{ width: hover ? "100%" : "0%" }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="absolute top-0 left-0 h-[3px] bg-[var(--main-color)]"
+            className="absolute rounded-4xl top-0 left-0 h-[3px] bg-[var(--main-color)]"
           />
         )}
       </Link>
