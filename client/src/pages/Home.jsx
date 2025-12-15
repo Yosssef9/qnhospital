@@ -16,10 +16,10 @@ export default function Home() {
 
   return (
     <div className=" ">
-      <div className="mt-[122px] ">
+      <div className="md:mt-[122px] mt-[50px] ">
         <Carousel images={images} />
       </div>
-      <div className="my-10">
+      <div className="my-6 md:my-10">
         <OfferArea />
       </div>
       <div className="my-10">

@@ -38,7 +38,7 @@ const sections = [
 export default function QnhHistory() {
   return (
     <div>
-      <div className="mt-[122px]">
+      <div className="md:mt-[122px] mt-[50px] ">
         <BreadcrumbArea imgUrl={"/images/about-us-header.jpg"} />
       </div>
       <div className="flex flex-col mb-20 px-5 md:px-20 lg:px-40 space-y-20 mt-20">

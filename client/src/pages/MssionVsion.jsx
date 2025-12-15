@@ -17,15 +17,15 @@ const sections = [
 export default function MssionVsion() {
   return (
     <div>
-      <div className="mt-[122px]">
+      <div className="md:mt-[122px] mt-[50px] ">
         <BreadcrumbArea imgUrl={"/images/about-us-header.jpg"} />
       </div>
-      <div className="flex flex-col mb-20 px-40">
+      <div className="flex flex-col mb-20 px-10 md:px-40">
         {sections.map((section, index) => (
           <motion.div
             key={index}
-            className={`flex mb-8 gap-44 my-20 items-center ${
-              index % 2 === 1 ? "flex-row-reverse" : ""
+            className={`flex flex-col md:flex-row mb-8 md:gap-44 my-20 items-center ${
+              index % 2 === 1 ? "md:flex-row-reverse" : ""
             }`}
             initial={{ opacity: 0, x: index % 2 === 1 ? 100 : -100 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -39,7 +39,7 @@ export default function MssionVsion() {
             <img
               src={section.imgUrl}
               alt={section.h1}
-              className="h-[350px] w-[400px] flex-shrink-0 rounded-2xl shadow-md"
+              className="md:h-[350px] md:w-[400px] flex-shrink-0 rounded-2xl shadow-md"
             />
             <div className="flex flex-col mt-10">
               <h1 className="mb-5 text-2xl font-bold text-[#2e438a]">

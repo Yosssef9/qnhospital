@@ -5,8 +5,8 @@ export default function Footer() {
   return (
     <footer className="mt-auto">
       {/* upper footer */}
-      <div className="bg-[var(--main-color)] py-12 px-32">
-        <div className="flex gap-10">
+      <div className="bg-[var(--main-color)] py-12 px-6 md:px-32">
+        <div className="flex flex-col md:flex-row gap-10 items-stretch">
           {/* Section 1 */}
           <div className="flex-1 flex flex-col gap-2 text-white">
             <motion.span className="font-semibold text-[#2e438a] text-lg">
@@ -42,7 +42,7 @@ export default function Footer() {
           </div>
 
           {/* Divider */}
-          <div className="w-px bg-white/30" />
+          <div className="w-full h-px md:w-px md:h-auto bg-white/30"></div>
 
           {/* Section 2 */}
           <div className="flex-1 flex flex-col gap-2 text-white">
@@ -72,7 +72,7 @@ export default function Footer() {
           </div>
 
           {/* Divider */}
-          <div className="w-px bg-white/30" />
+          <div className="w-full h-px md:w-px md:h-auto bg-white/30"></div>
 
           {/* Section 3 */}
           <div className="flex-1 flex flex-col gap-2 text-white">
@@ -102,23 +102,27 @@ export default function Footer() {
           </div>
 
           {/* Divider */}
-          <div className="w-px bg-white/30" />
+          <div className="w-full h-px md:w-px md:h-auto bg-white/30"></div>
 
           {/* Subscribe Section */}
-          <div className="flex flex-col">
-            <motion.h1 className="text-[#2e438a] text-4xl">Subscribe</motion.h1>
-            <motion.h1 className="font-light text-white text-4xl">
+          <div className="flex flex-col  mt-6 md:mt-0">
+            <motion.h1 className="text-[#2e438a] text-3xl md:text-4xl">
+              Subscribe
+            </motion.h1>
+            <motion.h1 className="font-light text-white text-3xl md:text-4xl">
               To our Newsletter
             </motion.h1>
-            <motion.input
-              type="email"
-              placeholder="Email Address"
-              className="bg-white my-6 px-4 py-2 w-56 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[var(--main-color)] focus:border-[var(--main-color)] transition"
-              whileHover={{ x: 3 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            />
-            <div className="">
-              <Button text={"Submit"} />
+            <div className="flex felx-row md:felx=col items-center gap-3">
+              <motion.input
+                type="email"
+                placeholder="Email Address"
+                className="bg-white my-4 md:my-6 px-4 py-2 w-48 md:w-56 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[var(--main-color)] focus:border-[var(--main-color)] transition"
+                whileHover={{ x: 3 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              />
+              <div>
+                <Button text={"Submit"} />
+              </div>
             </div>
           </div>
         </div>
@@ -127,48 +131,23 @@ export default function Footer() {
       {/* bottom footer */}
       <div className="bg-[#105f6c] text-white py-4 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
-          <span className="text-sm md:text-base">
+          <span className="text-sm md:text-base text-center md:text-left order-2 md:order-0">
             Copyright © Al Qassim National Hospital 2025. Powered By{" "}
             <a className="text-blue-500 hover:text-blue-700 font-semibold transition-colors duration-300 cursor-pointer">
-              {" "}
               Yossef Yasser
             </a>
           </span>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 order-1  md:order-0">
             <span className="text-sm md:text-base">Follow Us On</span>
-            <a
-              href="https://www.facebook.com/qnhospital/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaFacebookF className="text-white w-5 h-5 hover:text-blue-500 transition" />
-            </a>
-            <a
-              href="https://x.com/qnhospital"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaTwitter className="text-white w-5 h-5 hover:text-blue-400 transition" />
-            </a>
-            <a
-              href="https://www.instagram.com/qnhospital/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaInstagram className="text-white w-5 h-5 hover:text-pink-500 transition" />
-            </a>
-            <a
-              href="https://www.youtube.com/channel/UC219qqSlBkijpimMR9KYJhQ"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaYoutube className="text-white w-5 h-5 hover:text-red-600 transition" />
-            </a>
+            <FaFacebookF className="text-white w-5 h-5 hover:text-blue-500 transition" />
+            <FaTwitter className="text-white w-5 h-5 hover:text-blue-400 transition" />
+            <FaInstagram className="text-white w-5 h-5 hover:text-pink-500 transition" />
+            <FaYoutube className="text-white w-5 h-5 hover:text-red-600 transition" />
           </div>
 
-          <div className="flex gap-4 items-center">
-            <span className="text-sm md:text-base">
+          <div className="flex flex-row  gap-2 md:gap-4 items-center">
+            <span className="text-sm md:text-base text-center md:text-left">
               Visit Counsil Health Insurance{" "}
               <a
                 href="https://www.chi.gov.sa/pages/Home.aspx"
@@ -180,7 +159,7 @@ export default function Footer() {
             </span>
             <img
               src="/images/chi logo.png"
-              className="h-12 w-auto object-contain"
+              className="h-8 md:h-12 w-auto object-contain"
               alt="CHI Logo"
             />
           </div>

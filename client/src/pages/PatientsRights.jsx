@@ -110,7 +110,7 @@ export default function PatientsRightss() {
 
   return (
     <div>
-      <div className="mt-[122px]">
+      <div className="md:mt-[122px] mt-[50px] ">
         <BreadcrumbArea imgUrl={"/images/about.jpg"} />
       </div>
       <div className="max-w-6xl mx-auto px-6 py-16 flex flex-col md:flex-row gap-16 md:gap-10">

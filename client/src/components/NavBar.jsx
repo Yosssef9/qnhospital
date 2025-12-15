@@ -4,6 +4,8 @@ import { FiSearch } from "react-icons/fi";
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import { IoIosArrowDown } from "react-icons/io";
+import { FiMenu } from "react-icons/fi";
 
 import { useState } from "react";
 const navItems = [
@@ -58,10 +60,12 @@ const navItems = [
 ];
 
 export default function NavBar() {
+  const [burgerOpen, setBurgerOpen] = useState(false);
+
   return (
-    <div className="fixed w-full z-50 ">
+    <div className="md:fixed w-full z-50 ">
       {/* top bar */}
-      <div className="flex justify-between items-center px-40 h-10 bg-white border-t border-b border-gray-300">
+      <div className="hidden md:flex justify-between items-center px-40 h-10 bg-white border-t border-b border-gray-300">
         {/* Left side: contact info */}
         <div className="flex items-center">
           <div className="flex items-center gap-x-1 border-r border-gray-300 pr-3">
@@ -147,29 +151,98 @@ export default function NavBar() {
           </div>
         </div>
       </div>
-      {/* bottom bar */}
       {/* Bottom Navbar */}
-      <div className="flex justify-start items-center h-[90px] bg-white px-40  gap-0 shadow-sm">
+      <div className="flex flex-col md:flex-row justify-start items-center h-[90px] bg-white px-6 md:px-40  gap-0 shadow-sm">
         {/* Logo */}
-        <div className="flex items-center mr-12">
+        <div className="flex justify-center mt-2 items-center mr-12">
           <Link to="/">
             <img
               src="/images/newLogo.jpg"
               alt="Qassim Hospital Logo"
-              className="h-16 w-auto object-contain cursor-pointer"
+              className="h-16 w-auto md:h-16 min-h-[50px] cursor-pointer"
             />
           </Link>
         </div>
 
         {/* Navigation */}
-        <nav className="h-full flex items-center">
-          <ul className="flex items-center h-full gap-6 text-gray-700 font-medium">
+        <nav className="h-full w-full flex items-center">
+          <ul className="hidden md:flex items-center h-full gap-6 text-gray-700 font-medium">
             {navItems.map((item, idx) => (
               <DropdownItem key={idx} item={item} />
             ))}
           </ul>
+          <div className="block md:hidden py-2 px-2 w-full bg-[#105f6c] mb-4">
+            <button
+              className="text-3xl font-bold text-white"
+              onClick={() => setBurgerOpen(!burgerOpen)}
+            >
+              <FiMenu className="text-white text-3xl" />
+            </button>
+          </div>
         </nav>
       </div>
+      {/* Mobile side menu */}
+      <AnimatePresence>
+        {burgerOpen && (
+          <motion.div
+            initial={{ x: "-100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "-100%" }}
+            transition={{ type: "tween", duration: 0.3 }}
+            className="fixed top-0 left-0 w-full h-full overflow-y-auto bg-white z-50 flex flex-col"
+          >
+            <div className="flex justify-end  ">
+              <button
+                className="text-3xl font-bold text-white bg-[#288b9a] w-12 h-12 flex justify-center items-center "
+                onClick={() => setBurgerOpen(false)}
+              >
+                ×
+              </button>
+            </div>
+            <div className="flex justify-between items-center mt-2  h-10 bg-white border-t border-b border-gray-300">
+              {/* Left side: contact info */}
+              <div className="flex items-center">
+                <div className="flex items-center gap-x-1 border-r border-gray-300 pr-3">
+                  <a href="tel:0163836100" className="hover:underline">
+                    <PiPhoneCallFill className="text-[var(--main-color)] text-xl" />
+                  </a>
+                </div>
+
+                <div className="flex items-center gap-x-1 ml-3">
+                  <a
+                    href="mailto:info@qnhospital.com"
+                    className="hover:underline"
+                  >
+                    <IoIosMail className="text-[var(--main-color)] text-2xl" />
+                  </a>
+                </div>
+              </div>
+
+              {/* Right side: search */}
+              <div className="flex h-full">
+                <div className="relative h-full">
+                  <input
+                    type="text"
+                    placeholder="SEARCH"
+                    className=" px-4 h-full outline-none border border-transparent focus:border-[var(--main-color)] focus:ring-0 transition"
+                  />
+
+                  <FiSearch className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--main-color)] text-lg" />
+                </div>
+                <div className="flex items-center h-full">
+                  <div className="border-l border-gray-300 h-full" />
+                  <span className="px-6">عربي</span>
+                </div>
+              </div>
+            </div>
+            <ul className="flex flex-col py-4 pl-0  text-gray-700 font-medium">
+              {navItems.map((item, idx) => (
+                <MobileDropdown key={idx} item={item} />
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -232,6 +305,52 @@ function DropdownItem({ item }) {
                 <a
                   href={sub.href}
                   className="block py-2 text-white text-sm transition-transform duration-300 transform hover:translate-x-2"
+                >
+                  {sub.title}
+                </a>
+              </li>
+            ))}
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    </li>
+  );
+}
+
+// Mobile Dropdown
+function MobileDropdown({ item }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <li className="flex flex-col">
+      <button
+        className="flex justify-between items-center w-full py-4 px-2  bg-[#288b9a] text-white border border-b-[#4da4ab] font-medium"
+        onClick={() => setOpen(!open)}
+      >
+        {item.title}
+        {item.submenu && (
+          <motion.span
+            animate={{ rotate: open ? 180 : 0 }}
+            transition={{ duration: 0.3 }}
+            className="ml-2 text-white text-xl"
+          >
+            <IoIosArrowDown />
+          </motion.span>
+        )}
+      </button>
+      <AnimatePresence>
+        {item.submenu && open && (
+          <motion.ul
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="flex flex-col  overflow-hidden"
+          >
+            {item.submenu.map((sub, idx) => (
+              <li key={idx} className="border-b border-b-[#e8e2e2] ">
+                <a
+                  href={sub.href}
+                  className="block py-2 px-4 text-gray-700 hover:text-[var(--main-color)]"
                 >
                   {sub.title}
                 </a>

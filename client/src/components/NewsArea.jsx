@@ -64,7 +64,7 @@ export default function NewsArea() {
     <div className="flex flex-col md:flex-row gap-12 md:px-40 py-8">
       {/* Latest News */}
       <motion.div
-        className="flex flex-col md:w-1/3"
+        className="flex flex-col p-6 md:w-1/3"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -76,7 +76,7 @@ export default function NewsArea() {
         {sections.map((section, idx) => (
           <motion.div
             key={idx}
-            className="flex gap-4 mb-5"
+            className="flex gap-32 md:gap-4 mb-5"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: idx * 0.2 }}
@@ -97,7 +97,7 @@ export default function NewsArea() {
 
       {/* Latest Achievement */}
       <motion.div
-        className="flex flex-col md:w-2/3"
+        className="flex flex-col p-6 md:w-2/3"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
