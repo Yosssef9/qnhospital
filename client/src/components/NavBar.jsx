@@ -294,20 +294,24 @@ function DropdownItem({ item }) {
             className="absolute left-0 top-full w-[265px] flex flex-col bg-[var(--main-color)] shadow-lg min-w-[180px] overflow-hidden rounded-lg z-20"
           >
             {item.submenu.map((sub, subIdx) => (
-              <li
-                key={subIdx}
-                className={`w-full px-5 transition-colors duration-300 ${
-                  subIdx !== item.submenu.length - 1
-                    ? "border-b border-white/30"
-                    : ""
-                } hover:bg-[#00c0cd]`}
-              >
-                <a
-                  href={sub.href}
-                  className="block py-2 text-white text-sm transition-transform duration-300 transform hover:translate-x-2"
-                >
-                  {sub.title}
-                </a>
+              <li key={subIdx} className={`w-full px-5 ...`}>
+                {sub.href?.startsWith("http") ? (
+                  <a
+                    href={sub.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block py-2 text-white text-sm ..."
+                  >
+                    {sub.title}
+                  </a>
+                ) : (
+                  <Link
+                    to={sub.href}
+                    className="block py-2 text-white text-sm ..."
+                  >
+                    {sub.title}
+                  </Link>
+                )}
               </li>
             ))}
           </motion.ul>
@@ -347,13 +351,24 @@ function MobileDropdown({ item }) {
             className="flex flex-col  overflow-hidden"
           >
             {item.submenu.map((sub, idx) => (
-              <li key={idx} className="border-b border-b-[#e8e2e2] ">
-                <a
-                  href={sub.href}
-                  className="block py-2 px-4 text-gray-700 hover:text-[var(--main-color)]"
-                >
-                  {sub.title}
-                </a>
+              <li key={idx} className="border-b ...">
+                {sub.href?.startsWith("http") ? (
+                  <a
+                    href={sub.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block py-2 px-4 text-gray-700 ..."
+                  >
+                    {sub.title}
+                  </a>
+                ) : (
+                  <Link
+                    to={sub.href}
+                    className="block py-2 px-4 text-gray-700 ..."
+                  >
+                    {sub.title}
+                  </Link>
+                )}
               </li>
             ))}
           </motion.ul>
