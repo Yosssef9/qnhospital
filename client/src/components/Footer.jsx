@@ -1,6 +1,6 @@
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 import { motion } from "framer-motion";
-import Button from "./button";
+import Button from "./Button";
 export default function Footer() {
   return (
     <footer className="mt-auto">
