@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import Button from "./button";
+import Button from "./Button";
 
 export default function AboutArea() {
   return (
